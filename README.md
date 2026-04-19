@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 VeriMorph AI
 
-## Getting Started
+An advanced, AI-powered document forgery detection platform featuring a stunning 3D interactive landing page.
 
-First, run the development server:
+![VeriMorph AI](public/verimorph/favicon.svg)
 
+## 📖 Overview
+VeriMorph AI is a comprehensive platform designed to detect document tamering, identify deepfakes in documents, and perform rigorous forensic analysis using cutting-edge AI and computer vision techniques.
+
+This repository consists of:
+1. **The 3D Hero Landing Page (Next.js)**: A highly interactive, performant front-end built with Next.js, React Three Fiber, and Tailwind CSS.
+2. **The VeriMorph Web App (React + Vite)**: A dedicated single-page application located in the `verimorph-ai/` directory that handles document uploads, forensic analysis pipelines, and Chatbot explainability.
+3. **The AI Backend (FastAPI)**: Located in `verimorph-ai/backend/`, this Python backend processes OCR, Error Level Analysis (ELA), morphometric hashing, and AI-driven compliance checks using asynchronous processing (Celery + Redis).
+
+## 🚀 Features
+- **3D Interactive Landing Page**: An immersive introduction designed with `three.js`.
+- **Advanced Document Forensics**: OCR text extraction, morphological verification, QR code structural analysis, and visual tampering detection.
+- **RAG-Powered Explainability**: Powered by Groq, Mistral/Llama3, and Tavily for live web search functionality to explain the results of forensic analysis to users in a Chat UI.
+- **Microservices Architecture**: Combines Next.js for SSR SEO landing pages, Vite for high-speed client-side dashboard rendering, and FastAPI for intensive AI workloads.
+
+## 🛠️ Quick Start
+
+### 1. Launching the Landing Page
 ```bash
+# From the root directory
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+The landing page will be available at `http://localhost:3000`.
+
+### 2. Launching the VeriMorph AI Dashboard
+```bash
+# Navigate to the verimorph app
+cd verimorph-ai
+npm install
+npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Launching the Python Backend
+```bash
+# Navigate to the backend directory
+cd verimorph-ai/backend
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Install dependencies
+pip install -r requirements.txt
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Run the FastAPI server
+uvicorn main:app --reload --port 8000
+```
+For full instructions on the backend, please see [verimorph-ai/README.md](./verimorph-ai/README.md).
 
-## Learn More
+## 🔒 Environment Variables
+Check `.env.example` inside `verimorph-ai/` to configure the required API keys for PostgreSQL (Supabase), Groq, Tavily, and DeepSeek services.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+This project is proprietary and not open for commercial reuse without explicit permission.

@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# 🔍 VeriMorph AI Dashboard & Backend Services
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the internal directory for the **VeriMorph AI Dashboard** and **Local Processing Pipeline**.
 
-Currently, two official plugins are available:
+## 🏗️ Architecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This directory is split into two primary segments:
+- **Frontend (`src/`, React + Vite)**: A highly interactive UI that features a split-pane layout to view PDF/Image files alongside AI explanations, forensic heatmaps, and OCR confidence metrics.
+- **Backend (`backend/`, FastAPI + Python)**: Handles heavy processing, document structural verifications, deepfake detection workflows, and interfaces directly with the PostgreSQL database.
 
-## React Compiler
+## ⚙️ Frontend Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The frontend is built using React, Vite, TailwindCSS, and Zustand for state management.
 
-## Expanding the ESLint configuration
+```bash
+# Inside verimorph-ai/
+npm install
+npm run dev
+```
+By default, the Vite dev server runs at `http://localhost:5173`. Make sure the Python backend is running concurrently so that API calls can succeed!
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🐍 Backend Setup
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The backend leverages a series of advanced forensic services processing PDFs and Images using `pdf2image`, `OpenCV`, and various proprietary heuristic engines. It utilizes large language/vision models through APIs like Groq and DeepSeek.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerequisites (For Windows/Linux)
+1. **Tesseract OCR**: Needs to be installed on your system.
+2. **Poppler**: Required for `pdf2image` capabilities.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+```bash
+cd backend/
+python -m venv venv
+
+# On Windows:
+venv\Scripts\activate
+# On Mac/Linux:
+source venv/bin/activate
+
+pip install -r requirements.txt
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Starting the Server
+```bash
+# Navigate inside verimorph-ai/backend/
+uvicorn main:app --reload --port 8000
 ```
+This spawns the REST API at `http://127.0.0.1:8000`. You can check the Swagger Docs at `http://127.0.0.1:8000/docs`.
+
+### Dependencies & Environment Variables
+Copy `.env.example` to `.env` inside the `verimorph-ai` directory and populate your keys:
+- `GROQ_API_KEY`: Used for fast Mistral/Llama inference for document explainability chat.
+- `TAVILY_API_KEY`: Enables web-surfacing context for regulatory checks.
+- `SUPABASE_URL` / `SUPABASE_KEY`: Database synchronization layer.
+
+## 🧪 Forensic Modules available
+1. `Error Level Analysis (ELA)`
+2. `Morphological Shape Profiling`
+3. `QR / Barcode Forensic Integrity Inspection`
+4. `OCR Confidence Mapping`
+5. `LLM-driven Content Validation`
+
+*(For details regarding the root Next.js Landing page, please check `../README.md`)*
