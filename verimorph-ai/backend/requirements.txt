@@ -1,0 +1,42 @@
+# =============================================================
+# PART 20 — requirements.txt
+# All production Python dependencies
+# =============================================================
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+python-multipart>=0.0.9
+python-dotenv>=1.0.1
+pydantic>=2.7.0
+pydantic-settings>=2.2.1
+sqlalchemy[asyncio]>=2.0.30
+asyncpg>=0.29.0
+motor>=3.4.0
+redis>=5.0.4
+aioredis>=2.0.1
+celery>=5.3.6
+pytesseract>=0.3.10
+Pillow>=10.3.0
+pymupdf>=1.24.3
+pyzbar>=0.1.9
+opencv-python-headless>=4.9.0.80
+scikit-image>=0.23.2
+torch>=2.3.0
+torchvision>=0.18.0
+imagehash>=4.3.1
+openpyxl>=3.1.2
+reportlab>=4.2.0
+easyocr>=1.7.1
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+python-magic>=0.4.27
+aiofiles>=23.2.1
+structlog>=24.1.0
+groq>=0.9.0
+tavily-python>=0.3.3
+supabase>=2.4.3
+PyPDF2>=3.0.1
+pdfplumber>=0.11.1
+langchain>=0.2.0
+langchain-community>=0.2.0
+numpy>=1.26.4
+scikit-learn>=1.5.0

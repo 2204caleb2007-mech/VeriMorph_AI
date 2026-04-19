@@ -1,0 +1,19 @@
+================================================================================
+VERIDOC AI — API KEYS REFERENCE
+================================================================================
+
+Copy these into your .env file. Never commit real keys to version control.
+
+TAVILY_API_KEY=YOUR_API_KEY_HERE
+GROQ_API_KEY=YOUR_API_KEY_HERE
+DEEPSEEK_API_KEY=YOUR_API_KEY_HERE
+SUPABASE_URL=YOUR_API_KEY_HERE
+SUPABASE_KEY=YOUR_API_KEY_HERE
+
+================================================================================
+WHERE TO GET EACH KEY:
+  Tavily:    https://app.tavily.com/home
+  Groq:      https://console.groq.com/keys
+  DeepSeek:  https://platform.deepseek.com/api_keys
+  Supabase:  https://app.supabase.com/project/_/settings/api
+================================================================================
